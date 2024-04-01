@@ -1,0 +1,5 @@
+:host{
+  display: flex;
+  place-content: center center;
+  margin-top: 150px;
+}
