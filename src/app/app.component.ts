@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {DanceStyleFormComponent} from "./dance-style-form/dance-style-form.component";
+import {ReusableFormComponent} from "./reusable-form/reusable-form.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule, DanceStyleFormComponent],
+  imports: [RouterOutlet, ReactiveFormsModule, ReusableFormComponent],
   template: `
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div>
@@ -17,7 +17,8 @@ import {DanceStyleFormComponent} from "./dance-style-form/dance-style-form.compo
         <label for="name">Email</label>
         <input type="text" id="email" formControlName="email">
       </div>
-      <app-dance-style-form [form]="form"></app-dance-style-form>
+      <app-reusable-form [form]="form"></app-reusable-form>
+
       <button>Submit</button>
     </form>
   `,
