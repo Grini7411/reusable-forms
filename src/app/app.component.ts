@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, Renderer2, ViewContainerRef, ViewRef} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {DanceStyleFormComponent} from "./dance-style-form/dance-style-form.component";
+import {ReusableFormComponent} from "./reusalbe-form/reusable-form.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule, DanceStyleFormComponent],
+  imports: [RouterOutlet, ReactiveFormsModule, ReusableFormComponent],
   template: `
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div>
@@ -17,21 +17,23 @@ import {DanceStyleFormComponent} from "./dance-style-form/dance-style-form.compo
         <label for="name">Email</label>
         <input type="text" id="email" formControlName="email">
       </div>
-      <app-dance-style-form [form]="form"></app-dance-style-form>
+      <app-reusable-form controlKey="billingAddress" formName="billing address"></app-reusable-form>
+      <app-reusable-form controlKey="deliveryAddress" formName="delivery address"></app-reusable-form>
       <button>Submit</button>
     </form>
   `,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent{
+
+  constructor(private viewContainer: ViewContainerRef) {
+    console.log({view: this.viewContainer})
+  }
+
 
   form = new FormGroup({
     name: new FormControl<string>(''),
     email: new FormControl<string>(''),
-    styles: new FormGroup({
-      style: new FormControl<string>(''),
-      years: new FormControl<number>(0)
-    })
   });
 
 
