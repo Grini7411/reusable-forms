@@ -8,6 +8,7 @@ import {ControlContainer, FormControl, FormGroup, ReactiveFormsModule} from "@an
   viewProviders: [{
     provide: ControlContainer,
     useFactory: () => inject(ControlContainer, {skipSelf: true})
+    // useExisting: FormGroupDirective
   }
   ],
   template: `
@@ -38,6 +39,7 @@ export class ReusableFormComponent implements OnInit, OnDestroy {
 
   constructor(private childViewContainer: ViewContainerRef) {
     console.log({childView: this.childViewContainer})
+    console.log('%c parentControlContainer', 'color: green', this._parentControlContainer);
   }
 
 

@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, Renderer2, ViewContainerRef, ViewRef} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, ViewContainerRef} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {ReusableFormComponent} from "./reusalbe-form/reusable-form.component";
 
